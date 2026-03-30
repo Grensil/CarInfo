@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +33,7 @@ import com.grensil.carinfo.feature.insurance.viewmodel.InsuranceHomeViewModel
 fun InsuranceHomeScreen(
     onNavigateToList: () -> Unit,
     onNavigateToDetail: (String) -> Unit,
+    onNavigateToQuote: () -> Unit = {},
 ) {
     val viewModel: InsuranceHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
@@ -95,6 +97,17 @@ fun InsuranceHomeScreen(
                                 .padding(16.dp)
                                 .clickable { onNavigateToList() },
                         )
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(
+                            onClick = onNavigateToQuote,
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .fillMaxWidth(),
+                        ) {
+                            Text("🚗 보험 견적 요청하기")
+                        }
                     }
                 }
             }

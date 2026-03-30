@@ -35,6 +35,8 @@ import kotlinx.serialization.Serializable
     val insuranceId: String,
 )
 
+@Serializable data object InsuranceQuote
+
 // ── Fuel ──────────────────────────────────────────────────────
 @Serializable data object FuelHome
 
